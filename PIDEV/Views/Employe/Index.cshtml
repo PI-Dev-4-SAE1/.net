@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <a href="@Url.Action("Create", "Employe")"> add new employe </a>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    { 
+     @Html.TextBox("searching")
+
+    }
+    
+    
+    
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>Id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+            <th>password</th>
+            <th>job</th>
+            <th>disponability</th>
+        </tr>
+        @foreach (var e in ViewBag.result)
+        {
+            <tr>
+                <td>@e.id</td>
+                <td>@e.first_name</td>
+                <td>@e.last_name</td>
+                <td>@e.email</td>
+                <td>@e.password</td>
+                <td>@e.job</td>
+                <td>@e.disponability</td>
+                <td>
+                    <a href="@Url.Action("Delete", "Employe", new { id = @e.id })" class="btn btn-danger"> Delete </a>
+                    <a href="@Url.Action("Edit", "Employe",new { id = @e.id })" class="btn btn-danger"> Update </a>
+                </td>
+                
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

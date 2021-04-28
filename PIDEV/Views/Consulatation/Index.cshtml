@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <a href="@Url.Action("Create", "Consulatation")"> add Consultation </a>
+    <a href="@Url.Action("Createe", "Consulatation")"> Generate Consultation </a>
+
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>Id</th>
+            <th>child_name</th>
+            <th>namedoctor</th>
+            <th>consultation_date</th>
+            <th>consultation_time</th>
+            <th>description</th>
+        </tr>
+        @foreach (var e in ViewBag.result)
+        {
+            <tr>
+                <td>@e.id</td>
+                <td>@e.child_name</td>
+                <td>@e.namedoctor</td>
+                <td>@e.consultation_date</td>
+                <td>@e.consultation_time</td>
+                <td>@e.description</td>
+                <td>
+                    <a href="@Url.Action("Delete", "Consulatation", new { id = @e.id })" class="btn btn-danger"> Delete </a>
+                    <a href="@Url.Action("Edit", "Consulatation",new { id = @e.id })" class="btn btn-danger"> Update </a>
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>
