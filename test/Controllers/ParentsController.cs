@@ -270,8 +270,35 @@ namespace test.Controllers
             }
             return View(not);
         }
-      
 
+        [HttpPost]
+        public async Task<ActionResult> Kindergarten(string search)
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8081/SpringMVC/servlet/");
+            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("rechercheparcity/" + search).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.result = response.Content.ReadAsAsync<IEnumerable<childrengarden>>().Result;
+                return View(ViewBag.result);
+
+            }
+            else
+            {
+                var resultAppointmentsJson1 = await Client.GetAsync("KinderGartenByLikes");
+
+
+                var kindergarten = await resultAppointmentsJson1.Content.ReadAsAsync<IList<childrengarden>>();
+
+
+                return View(kindergarten);
+            }
+        }
 
     }
 }
