@@ -1,0 +1,61 @@
+﻿@model IEnumerable<test.Models.Parents>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List OF Parents</h2>
+
+
+
+<div class="container">
+    <section class="ftco-section">
+        @if (Model != null)
+
+        {
+            foreach (var item in Model)
+            {
+
+                <h1 class="mb-4" style="color: mediumvioletred "> @Html.DisplayFor(modelItem => item.name)</h1>
+                <div class="row">
+                    <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+                        <td><img src="~/Content/photo/@Html.DisplayFor(modelItem => item.photo)" height="400px" width="380px" class="rounded-circle" alt=""></td>
+                        <div class="text">
+                            <ul>
+                                <li> EMAIL : @Html.DisplayFor(modelItem => item.mail)</li>
+                                <li>PHONE NUMBER : @Html.DisplayFor(modelItem => item.phone_number)</li>
+                                <li>ADRESS: @Html.DisplayFor(modelItem => item.adress)</li>
+                                <li>
+                                    CHILDREN NAME:
+                                    @Html.DisplayFor(modelItem => item.child_name)
+                                </li>
+                                <li>
+                                    BIRTHDAY :
+                                    @Html.DisplayFor(modelItem => item.dateNaissance)
+                                </li>
+                                <li>KINDERGARTEN NAME : @Html.DisplayFor(modelItem => item.kindergartenname)</li>
+                                <li>INSCRIPTION DATE : @Html.DisplayFor(modelItem => item.date_inscrit)</li>
+
+                            </ul>
+
+
+                           
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+        }
+
+        <p class="btn btn-danger">
+            <a>@Html.ActionLink("RETURN", "Parent", "Parents") </a>
+        </p>
+    </section>
+</div>

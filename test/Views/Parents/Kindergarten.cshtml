@@ -1,0 +1,132 @@
+﻿@model IEnumerable<test.Models.childrengarden>
+
+@{
+    ViewBag.Title = "Kindergarten";
+}
+
+<h2 style="background-color:lightpink; text-align:center;"><b>KINDERGARTEN SORTED BY LIKES</b> </h2>
+<div class="sidebar-search">
+    <label style="font-size:20px;">Search Garden With :</label>
+    <div class="input-group custom-search-form" style="align-content">
+
+        <input type="text" id="city" placeholder="City">  |  <input type="text" id="gouve" placeholder="Gouvernat">
+        <button class="btn btn-primary px-3 ">@Html.ActionLink("SEARCH", "recherche")</button>
+        <input type="text" id="price" placeholder="Price">
+        <button class="btn btn-primary px-3 ">@Html.ActionLink("SEARCH", "SEARCH")</button>
+
+    </div>
+    @using (Html.BeginForm("recherche", "childrengarden"))
+    {
+        //Champ texte de recherche
+        @Html.TextBoxFor(e => e.FirstOrDefault().city)
+        @Html.TextBoxFor(e => e.FirstOrDefault().governate)
+        <input type="submit" value="echerche" />
+    }
+
+
+
+</div>
+<hr>
+
+@if (Model != null)
+
+{
+
+    foreach (var item in Model)
+    {
+
+        <div class="container p-3 my-3 border">
+
+            <ul class="nospace group clrbox">
+
+
+                <article>
+                    <h4 class="heading"> Name OF GARDEN : @Html.DisplayFor(modelItem => item.nom)</h4>
+                    <li> DESCRIPTION : @Html.DisplayFor(modelItem => item.description)</li>
+                    <li>PHONE NUMBER : @Html.DisplayFor(modelItem => item.phone_number)</li>
+                    <li>Email :  @Html.DisplayFor(modelItem => item.email_garden)</li>
+                    <li>City: @Html.DisplayFor(modelItem => item.city)</li>
+                    <li>
+                        Gouvernate:
+                        @Html.DisplayFor(modelItem => item.governate)
+                    </li>
+                    <li>
+                        Adress :
+                        @Html.DisplayFor(modelItem => item.location)
+                    </li>
+                    <li>Price : @Html.DisplayFor(modelItem => item.price)</li>
+
+                    <div>
+                        <i class='far fa-grin-hearts' style="background-color:lightpink; text-align:center;"> @Html.DisplayFor(modelItem => item.count_like)</i>
+
+                        <i class='fas fa-tired ' style="background-color:lightpink; text-align:center;">  @Html.DisplayFor(modelItem => item.count_dislike)</i>
+                    </div>
+                    <div>
+                        <button style='font-size:12px'>@Html.ActionLink("Like", "LikeKnderGarten", "Parents", new { gardenId = item.id }, null) <i class='far fa-grin-hearts'></i></button>
+                        <button style='font-size:12px'>@Html.ActionLink("Dislike", "DislikeKnderGarten", "Parents", new { gardenId = item.id }, null) <i class='fas fa-tired'></i></button>
+                    </div>
+                    <button class="btn btn-primary px-4 " onclick="myFunction()">@Html.ActionLink("Inscription", "SendMailIns", "Parents", new { gardenId = item.id }, null)</button>
+
+
+                </article>
+
+
+
+            </ul>
+        </div>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <script>
+            function myFunction() {
+                alert("La demande d'inscription est envoyée pae Email ");
+            }
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+}
+<p class="btn btn-danger">
+    <a>@Html.ActionLink("RETURN", "Parent", "Parents") </a>
+</p>
+
+
