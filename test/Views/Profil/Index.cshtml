@@ -1,0 +1,33 @@
+﻿@model IEnumerable<test.Models.Posts>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+    @foreach (var item in Model)
+    {
+        <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+            <a href="portfolio.html" class="image" style="background-image: url('images/work-1.jpg'); " data-scrollax=" properties: { translateY: '-20%'}">
+            </a>
+            <div class="text">
+                <h4 class="subheading"> @Html.DisplayFor(modelItem => item.title)</h4>
+                <h2 class="heading">@Html.DisplayFor(modelItem => item.description)</h2>
+                <p>@Html.DisplayFor(modelItem => item.content)</p>
+                <p> @Html.ActionLink("View Comments", "ViewComments", new { id = item.id }) </p>
+                <a href="@Url.Action("Edit", "Posts", new { id = item.id })"><button class="mb-1 btn btn-info" type="button">Edit</button></a>
+
+                <a href="@Url.Action("Delete", "Posts", new { id = item.id })"><button class="mb - 1 btn btn-success" type="button">Delete</button></a>
+            </div>
+        </div>
+
+       
+
+    }
+
+

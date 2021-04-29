@@ -36,11 +36,12 @@ namespace test.Controllers
             return View("Create");
         }
         [HttpPost]
-        public ActionResult Create(Comments pst)
+
+        public ActionResult Create(int id ,Comments pst)
         {
             HttpClient Client = new HttpClient();
             Client.BaseAddress = new Uri("http://localhost:8081");
-            Client.PostAsJsonAsync<Comments>("SpringMVC/servlet/1/add-Posts", pst).ContinueWith((postTask) => postTask.Result.EnsureSuccessStatusCode());
+            Client.PostAsJsonAsync<Comments>("SpringMVC/servlet/creatComment/1/posts/"+id , pst).ContinueWith((postTask) => postTask.Result.EnsureSuccessStatusCode());
             return RedirectToAction("Index");
         }
     }

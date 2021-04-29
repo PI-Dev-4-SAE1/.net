@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +195,7 @@
     <Content Include="Content\images\image_5.jpg" />
     <Content Include="Content\images\image_6.jpg" />
     <Content Include="Content\images\loc.png" />
+    <Content Include="Content\images\omar.jpg" />
     <Content Include="Content\images\person_1.jpg" />
     <Content Include="Content\images\person_2.jpg" />
     <Content Include="Content\images\person_3.jpg" />
@@ -371,6 +373,11 @@
     <Content Include="Views\Posts\Delete.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Posts\ViewComments.cshtml" />
+    <Content Include="Views\Profil\Index.cshtml" />
+    <Content Include="Views\Posts\AddComment.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Posts\SupprimerComment.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

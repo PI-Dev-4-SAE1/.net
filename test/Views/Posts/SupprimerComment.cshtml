@@ -1,0 +1,48 @@
+﻿@model test.Models.Comments
+
+@{
+    ViewBag.Title = "SupprimerComment";
+}
+
+<h2>SupprimerComment</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Comments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.text)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="S" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
